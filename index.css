@@ -1,0 +1,365 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    /* Paleta de colores Pepe el Gato */
+    --azul-oceano: 214 75% 47%;
+    --turquesa-marino: 174 76% 44%;
+    --amarillo-estrella: 45 100% 65%;
+    --naranja-energia: 22 100% 63%;
+    --lila-emocional: 258 68% 71%;
+    
+    /* Variables del sistema */
+    --background: 174 76% 95%;
+    --foreground: 214 75% 25%;
+    --card: 0 0% 100%;
+    --card-foreground: 214 75% 25%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 214 75% 25%;
+    --primary: 214 75% 47%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 174 76% 44%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 174 50% 90%;
+    --muted-foreground: 214 50% 40%;
+    --accent: 45 100% 65%;
+    --accent-foreground: 214 75% 25%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 174 50% 80%;
+    --input: 174 50% 85%;
+    --ring: 214 75% 47%;
+    --radius: 1.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Botón estilo Pepe - Naranja energía */
+  .btn-pepe {
+    @apply px-8 py-4 rounded-3xl font-bold text-white text-lg shadow-lg transform transition-all duration-300;
+    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    box-shadow: 0 8px 0 #E55A2B, 0 15px 20px rgba(255, 140, 66, 0.4);
+  }
+  
+  .btn-pepe:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 10px 0 #E55A2B, 0 20px 25px rgba(255, 140, 66, 0.5);
+  }
+  
+  .btn-pepe:active {
+    @apply translate-y-2;
+    box-shadow: 0 2px 0 #E55A2B, 0 5px 10px rgba(255, 140, 66, 0.4);
+  }
+  
+  /* Botón secundario - Turquesa */
+  .btn-turquesa {
+    @apply px-6 py-3 rounded-2xl font-bold text-white text-base transform transition-all duration-300;
+    background: linear-gradient(135deg, #1BC7C9 0%, #15A3A5 100%);
+    box-shadow: 0 6px 0 #0E8A8C, 0 10px 15px rgba(27, 199, 201, 0.4);
+  }
+  
+  .btn-turquesa:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 8px 0 #0E8A8C, 0 15px 20px rgba(27, 199, 201, 0.5);
+  }
+  
+  .btn-turquesa:active {
+    @apply translate-y-1;
+    box-shadow: 0 2px 0 #0E8A8C, 0 5px 10px rgba(27, 199, 201, 0.4);
+  }
+  
+  /* Botón amarillo - Logros */
+  .btn-amarillo {
+    @apply px-6 py-3 rounded-2xl font-bold text-gray-800 text-base transform transition-all duration-300;
+    background: linear-gradient(135deg, #FFD84D 0%, #FFC82D 100%);
+    box-shadow: 0 6px 0 #E5B820, 0 10px 15px rgba(255, 216, 77, 0.4);
+  }
+  
+  .btn-amarillo:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 8px 0 #E5B820, 0 15px 20px rgba(255, 216, 77, 0.5);
+  }
+  
+  /* Tarjeta de aventura */
+  .card-aventura {
+    @apply rounded-3xl p-6 cursor-pointer transform transition-all duration-300;
+    background: linear-gradient(145deg, #ffffff 0%, #f0f9ff 100%);
+    box-shadow: 0 10px 30px rgba(31, 110, 212, 0.15), 
+                inset 0 -3px 0 rgba(31, 110, 212, 0.1);
+  }
+  
+  .card-aventura:hover {
+    @apply -translate-y-2;
+    box-shadow: 0 20px 40px rgba(31, 110, 212, 0.25), 
+                inset 0 -3px 0 rgba(31, 110, 212, 0.15);
+  }
+  
+  /* Fondo degradado océano */
+  .bg-oceano {
+    background: linear-gradient(180deg, #1F6ED4 0%, #1BC7C9 50%, #E0F7FA 100%);
+  }
+  
+  /* Fondo degradado cielo */
+  .bg-cielo {
+    background: linear-gradient(180deg, #87CEEB 0%, #E0F7FA 100%);
+  }
+  
+  /* Burbuja de diálogo */
+  .burbuja-dialogo {
+    @apply relative rounded-3xl p-6;
+    background: white;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .burbuja-dialogo::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 30px;
+    border-width: 20px 20px 0;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+  
+  /* Estrella brillante */
+  .estrella-brillo {
+    animation: brillo 2s ease-in-out infinite;
+  }
+  
+  @keyframes brillo {
+    0%, 100% { 
+      filter: drop-shadow(0 0 10px rgba(255, 216, 77, 0.8));
+      transform: scale(1);
+    }
+    50% { 
+      filter: drop-shadow(0 0 30px rgba(255, 216, 77, 1));
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Flotar animación */
+  .flotar {
+    animation: flotar 3s ease-in-out infinite;
+  }
+  
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  
+  /* Saltar animación */
+  .saltar {
+    animation: saltar 0.6s ease-in-out;
+  }
+  
+  @keyframes saltar {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.1); }
+  }
+  
+  /* Aparecer animación */
+  .aparecer {
+    animation: aparecer 0.5s ease-out forwards;
+  }
+  
+  @keyframes aparecer {
+    from { 
+      opacity: 0; 
+      transform: scale(0.8) translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1) translateY(0); 
+    }
+  }
+  
+  /* Confeti */
+  .confeti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: confeti-caida 3s ease-out forwards;
+  }
+  
+  @keyframes confeti-caida {
+    0% {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(100vh) rotate(720deg);
+    }
+  }
+  
+  /* Nubes decorativas */
+  .nube {
+    @apply absolute rounded-full;
+    background: rgba(255, 255, 255, 0.8);
+    filter: blur(1px);
+  }
+  
+  /* Partículas mágicas */
+  .particula {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #FFD84D;
+    border-radius: 50%;
+    animation: flotar-particula 4s ease-in-out infinite;
+  }
+  
+  @keyframes flotar-particula {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+      transform: translateY(-100px) translateX(50px);
+      opacity: 0;
+    }
+  }
+  
+  /* Barra de progreso */
+  .barra-progreso {
+    @apply h-4 rounded-full overflow-hidden;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .barra-progreso-fill {
+    @apply h-full rounded-full transition-all duration-500;
+    background: linear-gradient(90deg, #FFD84D 0%, #FF8C42 100%);
+  }
+  
+  /* Emoción card */
+  .card-emocion {
+    @apply rounded-3xl p-6 cursor-pointer transform transition-all duration-300 text-center;
+  }
+  
+  .card-emocion-triste {
+    background: linear-gradient(145deg, #E3F2FD 0%, #BBDEFB 100%);
+    box-shadow: 0 8px 0 #90CAF9, 0 15px 25px rgba(144, 202, 249, 0.4);
+  }
+  
+  .card-emocion-enojo {
+    background: linear-gradient(145deg, #FFEBEE 0%, #FFCDD2 100%);
+    box-shadow: 0 8px 0 #EF9A9A, 0 15px 25px rgba(239, 154, 154, 0.4);
+  }
+  
+  .card-emocion-miedo {
+    background: linear-gradient(145deg, #F3E5F5 0%, #E1BEE7 100%);
+    box-shadow: 0 8px 0 #CE93D8, 0 15px 25px rgba(206, 147, 216, 0.4);
+  }
+  
+  .card-emocion:hover {
+    @apply -translate-y-2;
+  }
+  
+  .card-emocion:active {
+    @apply translate-y-1;
+  }
+  
+  /* Opción de respuesta */
+  .opcion-respuesta {
+    @apply w-full p-4 rounded-2xl text-left font-semibold text-gray-700 transition-all duration-300;
+    background: white;
+    box-shadow: 0 4px 0 #E0E0E0, 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .opcion-respuesta:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 6px 0 #E0E0E0, 0 12px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .opcion-respuesta.correcta {
+    background: linear-gradient(145deg, #C8E6C9 0%, #A5D6A7 100%);
+    box-shadow: 0 4px 0 #81C784, 0 8px 15px rgba(129, 199, 132, 0.4);
+  }
+  
+  .opcion-respuesta.incorrecta {
+    background: linear-gradient(145deg, #FFEBEE 0%, #FFCDD2 100%);
+    box-shadow: 0 4px 0 #EF9A9A, 0 8px 15px rgba(239, 154, 154, 0.4);
+  }
+  
+  /* Badge de aventura completada */
+  .badge-completada {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold;
+    background: linear-gradient(135deg, #FFD84D 0%, #FF8C42 100%);
+    color: white;
+  }
+  
+  /* Título de sección */
+  .titulo-seccion {
+    @apply text-3xl md:text-4xl font-black text-center;
+    background: linear-gradient(135deg, #1F6ED4 0%, #1BC7C9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 15px rgba(31, 110, 212, 0.2);
+  }
+  
+  /* Subtítulo */
+  .subtitulo {
+    @apply text-lg md:text-xl font-semibold text-gray-600 text-center;
+  }
+  
+  /* Contenedor principal */
+  .contenedor-app {
+    @apply min-h-screen w-full;
+    background: linear-gradient(180deg, #E3F2FD 0%, #E0F7FA 30%, #FFFFFF 100%);
+  }
+  
+  /* Efecto de ondas */
+  .ondas-fondo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231F6ED4' fill-opacity='0.1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+    background-size: cover;
+    pointer-events: none;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E0F7FA;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1BC7C9 0%, #1F6ED4 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #15A3A5 0%, #1A5DB8 100%);
+}

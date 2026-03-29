@@ -1,0 +1,231 @@
+/* Estilos adicionales para la aplicación Pepe el Gato */
+
+/* Efecto de brillo para estrellas */
+@keyframes estrella-brillo {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 216, 77, 0.6));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(255, 216, 77, 1));
+    transform: scale(1.1);
+  }
+}
+
+.estrella-efecto {
+  animation: estrella-brillo 1.5s ease-in-out infinite;
+}
+
+/* Animación de rebote suave */
+@keyframes rebote-suave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.rebote {
+  animation: rebote-suave 2s ease-in-out infinite;
+}
+
+/* Efecto de pulso para botones importantes */
+@keyframes pulso {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 140, 66, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(255, 140, 66, 0);
+  }
+}
+
+.btn-pulso {
+  animation: pulso 2s infinite;
+}
+
+/* Animación de sacudida para respuestas incorrectas */
+@keyframes sacudida {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.sacudida {
+  animation: sacudida 0.4s ease-in-out;
+}
+
+/* Efecto de escala para respuestas correctas */
+@keyframes escala-exito {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.escala-exito {
+  animation: escala-exito 0.4s ease-in-out;
+}
+
+/* Gradiente animado para fondos especiales */
+@keyframes gradiente-movimiento {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.fondo-animado {
+  background-size: 200% 200%;
+  animation: gradiente-movimiento 8s ease infinite;
+}
+
+/* Efecto de ondas para celebraciones */
+@keyframes ondas {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.onda-celebracion {
+  position: absolute;
+  border-radius: 50%;
+  animation: ondas 1s ease-out forwards;
+}
+
+/* Estilo para texto con sombra suave */
+.texto-sombra {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto de flotación más suave */
+@keyframes flotar-suave {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+}
+
+.flotar-suave {
+  animation: flotar-suave 4s ease-in-out infinite;
+}
+
+/* Efecto de brillo para elementos importantes */
+@keyframes brillo-elemento {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+.brillo {
+  animation: brillo-elemento 2s ease-in-out infinite;
+}
+
+/* Animación de aparición con rebote */
+@keyframes aparecer-rebote {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.aparecer-rebote {
+  animation: aparecer-rebote 0.6s ease-out forwards;
+}
+
+/* Efecto de desenfoque al salir */
+@keyframes desenfoque-salida {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+.desenfoque-salida {
+  animation: desenfoque-salida 0.3s ease-out forwards;
+}
+
+/* Estilo para tarjetas con borde brillante */
+.tarjeta-borde-brillo {
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta-borde-brillo::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #FFD84D, #FF8C42, #1BC7C9, #1F6ED4);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tarjeta-borde-brillo:hover::before {
+  opacity: 1;
+}
+
+/* Efecto de partículas flotantes */
+.particula-flotante {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .titulo-seccion {
+    font-size: 1.75rem !important;
+  }
+  
+  .btn-pepe {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .card-aventura {
+    padding: 1rem;
+  }
+}
+
+/* Accesibilidad - reducir animaciones */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
